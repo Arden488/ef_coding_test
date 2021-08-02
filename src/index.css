@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+
+:root {
+  /* BRAND COLORS */
+  --color-primary: #fc1784;
+  --color-primary-hover: #d80076;
+  --color-primary-disabled: #bbb; /* TODO: update */
+  --color-secondary: #009fe2;
+  --color-secondary-hover: #009fe2;
+  --color-secondary-disabled: #ededed; /* TODO: update */
+
+  /* APP COLORS */
+  --color-main-text: #222;
+  --color-main-bg: #fff;
+  --color-header-bg: #fefbcf;
+  --color-footer-bg: #e4eaee;
+
+  /* TYPOGRAPHY */
+  --text-size-global: 16px;
+  --text-size-heading1: 60px;
+  --text-size-heading2: 48px;
+
+  /* SPACING */
+  --spacing1: 4px;
+  --spacing2: 8px;
+  --spacing3: 12px;
+  --spacing4: 16px;
+  --spacing5: 24px;
+  --spacing6: 32px;
+  --spacing7: 64px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--color-main-text);
+  background: var(--color-main-bg);
+  font-size: var(--text-size-global);
+  font-family: EF Circular Latin, Helvetica, Open Sans, Gill Sans MT, Gill Sans,
+    Corbel, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: EF Circular Latin;
+  font-display: fallback;
+  src: url(./fonts/EFCircularWeb-Light.woff2) format("woff2"),
+    url(./fonts/EFCircularWeb-Light.woff) format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: EF Circular Latin;
+  font-display: fallback;
+  src: url(./fonts/EFCircularWeb-Book.woff2) format("woff2"),
+    url(./fonts/EFCircularWeb-Book.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: EF Circular Latin;
+  font-display: fallback;
+  src: url(./fonts/EFCircularWeb-BoldItalic.woff2) format("woff2"),
+    url(./fonts/EFCircularWeb-BoldItalic.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+h1 {
+  font-size: var(--text-size-heading1);
+}
+
+h2 {
+  font-size: var(--text-size-heading2);
+}
+
+h1,
+h2 {
+  font-weight: 700;
 }
