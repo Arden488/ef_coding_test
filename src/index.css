@@ -4,11 +4,11 @@
   /* BRAND COLORS */
   --color-primary: #fc1784;
   --color-primary-hover: #d80076;
-  --color-primary-disabled: #b98ca5; /* TODO: update */
+  --color-primary-disabled: #b98ca5;
   --color-primary-text: #fff;
   --color-secondary: #009fe2;
   --color-secondary-hover: #009fe2;
-  --color-secondary-disabled: #ededed; /* TODO: update */
+  --color-secondary-disabled: #ededed;
   --color-secondary-text: #fff;
 
   /* APP COLORS */
