@@ -13,6 +13,12 @@ test("render disabled button correctly", () => {
   expect(screen.getByRole("button")).toHaveAttribute("disabled");
 });
 
+test("render large button correctly", () => {
+  render(<Button variant="large">Text</Button>);
+
+  expect(screen.getByRole("button")).toHaveAttribute("class", "btn btn-large");
+});
+
 test("handler is working", () => {
   const onClick = jest.fn();
   render(<Button onClick={onClick}>Text</Button>);

@@ -20,3 +20,9 @@
   background: var(--color-primary-disabled);
   cursor: default;
 }
+
+.btn.btn--large {
+  padding: var(--padding-button-large);
+  font-size: var(--text-size-button-large);
+  border-radius: var(--button-large-radius);
+}

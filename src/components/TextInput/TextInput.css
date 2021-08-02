@@ -1,0 +1,10 @@
+.text-input {
+  border: 1px solid #dedede;
+  padding: 10px 5px;
+  min-width: 50px;
+}
+
+.text-input[type="number"] {
+  font-size: 18px;
+  text-align: center;
+}
