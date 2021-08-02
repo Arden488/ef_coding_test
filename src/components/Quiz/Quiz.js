@@ -7,20 +7,27 @@ import Loader from "../Loader/Loader";
 
 import "./Quiz.css";
 
-export default function Quiz({ questionIndex, handleFinished, handleNext }) {
+export default function Quiz({
+  settings,
+  questionIndex,
+  handleFinished,
+  handleNext,
+}) {
   const [data, setData] = useState(null);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=10&category=32")
+    fetch(
+      `https://opentdb.com/api.php?amount=${settings.num}&category=${settings.category}`
+    )
       .then((res) => res.json())
       .then((result) => {
         setData(result.results);
         setTotalQuestions(result.results.length);
       });
-  }, []);
+  }, [settings]);
 
   useEffect(() => {
     if (!data) return;
