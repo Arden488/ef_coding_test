@@ -10,7 +10,7 @@ test("renders choice", () => {
 test("renders active choice", () => {
   const { container } = render(<AnswerChoice isActive>Text</AnswerChoice>);
 
-  expect(container.getElementsByClassName("answer-choice_active").length).toBe(
+  expect(container.getElementsByClassName("answer-choice--active").length).toBe(
     1
   );
 });

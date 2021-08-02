@@ -16,7 +16,7 @@ test("render disabled button correctly", () => {
 test("render large button correctly", () => {
   render(<Button variant="large">Text</Button>);
 
-  expect(screen.getByRole("button")).toHaveAttribute("class", "btn btn-large");
+  expect(screen.getByRole("button")).toHaveAttribute("class", "btn btn--large");
 });
 
 test("handler is working", () => {
