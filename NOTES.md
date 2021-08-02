@@ -5,6 +5,7 @@ Thank you for the opportunity to participate in this challenge!
 ### Overall result
 
 I've created a simple quiz app, decently styled and fast. I installed a few "utility" packages and used simple state management. I also added several tests to check if components render correctly.
+
 After that I decided to add a bit more features to the app and eventually changed the state management approach (more details below).
 To see the early version (without some features and simple state) see this git commit tree: https://github.com/Arden488/ef_coding_test/tree/6efc387a44993e615c522708d733237ce4e83428
 
@@ -12,8 +13,9 @@ To see the early version (without some features and simple state) see this git c
 
 I spent about two hours to create styles, components and connect them together. Additional 30 minutes were spent to create tests. Another 30 minutes I used to write these notes and manually test the app.
 
-UPDATE #1: I added more functionality - quiz settings and quiz reset. It took about 20 mins
-UPDATE #2: I decided to refactor the app and add context and reducer instead of callback state management. It took about 1 hour.
+**UPDATE #1**: I added more functionality - quiz settings and quiz reset. It took about 20 mins
+
+**UPDATE #2**: I decided to refactor the app and add context and reducer instead of callback state management. It took about 1 hour.
 
 ### Javascript/Typescript
 
@@ -29,7 +31,7 @@ I added few lines of code to make the app look good on mobile devices.
 
 State management is kept simple with handlers and props passed down (no unnecessary prop drilling is required due to the small codebase). The only place that have multiple handlers and state manipulations is the `Quiz` component. I've seen no need to use reducer here as the logic remain clear.
 
-UPDATE: After introducing some additional functionality, the App state became harder to manage. I decided to rewrite the state management to use context and reducer. It adds a lit bit of complexity, but there is no need to pass props anymore and the app components have global state without redux. It is probably not necessary for such small application, but I decided that it is a good way to show this technique.
+**UPDATE**: After introducing some additional functionality, the App state became harder to manage. I decided to rewrite the state management to use context and reducer. It adds a lit bit of complexity, but there is no need to pass props anymore and the app components have global state without redux. It is probably not necessary for such small application, but I decided that it is a good way to show this technique.
 
 ### Tests
 
