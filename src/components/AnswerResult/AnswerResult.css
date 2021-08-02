@@ -6,21 +6,21 @@
   text-align: center;
 }
 
-.answer-result-question {
+.answer-result__question {
   margin: 0 0 var(--spacing5);
   font-weight: 500;
   padding: 0;
 }
 
-.answer-result-explain {
+.answer-result__explain {
   margin: 0;
   padding: 0;
 }
 
-.answer-result-yours {
+.answer-result__yours {
   color: var(--color-fail);
 }
 
-.answer-result.answer-result_correct .answer-result-yours {
+.answer-result.answer-result--correct .answer-result__yours {
   color: var(--color-success);
 }

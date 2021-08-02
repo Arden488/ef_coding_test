@@ -8,16 +8,16 @@ export default function AnswerResult({ data }) {
 
   let classnames = classNames({
     "answer-result": true,
-    "answer-result_correct": correct,
+    "answer-result--correct": correct,
   });
 
   return (
     <div className={classnames}>
-      <h4 className="answer-result-question">{parseEntities(question)}</h4>
-      <p className="answer-result-yours">Your answer: {answer}</p>
-      {correct && <p className="answer-result-explain">Correct!</p>}
+      <h4 className="answer-result__question">{parseEntities(question)}</h4>
+      <p className="answer-result__yours">Your answer: {answer}</p>
+      {correct && <p className="answer-result__explain">Correct!</p>}
       {!correct && (
-        <p className="answer-result-explain">
+        <p className="answer-result__explain">
           Sorry, the correct answer is: {correct_answer}
         </p>
       )}

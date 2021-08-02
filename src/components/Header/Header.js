@@ -10,7 +10,7 @@ export default function Header() {
         <Logo className="ef-logo" />
         <span>Quiz</span>
       </h1>
-      <div className="app-header-divider">
+      <div className="app-header__divider">
         <Divider />
       </div>
     </header>

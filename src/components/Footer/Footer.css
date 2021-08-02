@@ -4,7 +4,7 @@
   align-content: flex-end;
 }
 
-.app-footer-text {
+.app-footer__text {
   text-align: center;
   background: var(--color-footer-bg);
   padding: var(--spacing5) 0;
@@ -12,20 +12,20 @@
 }
 
 /* Taken from https://www.shapedivider.app/ */
-.app-footer-divider {
+.app-footer__divider {
   width: 100%;
   overflow: hidden;
   line-height: 0;
   transform: rotate(180deg);
 }
 
-.app-footer-divider svg {
+.app-footer__divider svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
   height: 80px;
 }
 
-.app-footer-divider path {
+.app-footer__divider path {
   fill: var(--color-footer-bg);
 }

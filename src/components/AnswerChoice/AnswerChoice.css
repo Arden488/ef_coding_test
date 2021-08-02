@@ -12,9 +12,9 @@
   background: #dcdcdc;
 }
 
-.answer-choice_active,
-.answer-choice_active:hover,
-.answer-choice_active:focus {
+.answer-choice--active,
+.answer-choice--active:hover,
+.answer-choice--active:focus {
   cursor: default;
   background: var(--color-secondary);
   color: var(--color-secondary-text);

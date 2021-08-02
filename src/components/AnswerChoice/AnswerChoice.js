@@ -5,7 +5,7 @@ import "./AnswerChoice.css";
 export default function AnswerChoice({ children, handleChoice, isActive }) {
   let classnames = classNames({
     "answer-choice": true,
-    "answer-choice_active": isActive,
+    "answer-choice--active": isActive,
   });
 
   return (

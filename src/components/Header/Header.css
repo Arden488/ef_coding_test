@@ -53,19 +53,19 @@
 }
 
 /* Taken from https://www.shapedivider.app/ */
-.app-header-divider {
+.app-header__divider {
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
-.app-header-divider svg {
+.app-header__divider svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
   height: 100px;
 }
 
-.app-header-divider path {
+.app-header__divider path {
   fill: var(--color-header-bg);
 }
