@@ -1,0 +1,71 @@
+.app-header {
+  position: relative;
+}
+
+.app-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-main-text);
+  background-color: var(--color-header-bg);
+  font-style: italic;
+  line-height: 60px;
+  margin: 0;
+  padding: var(--spacing6) 0;
+  text-transform: uppercase;
+}
+
+.app-title .ef-logo {
+  height: 50px;
+}
+
+.app-title .ef-logo path {
+  fill: var(--color-main-text);
+}
+
+.app-title span {
+  margin-left: var(--spacing4);
+  padding-left: var(--spacing5);
+  position: relative;
+}
+
+.app-title span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  left: 0;
+  background-color: var(--color-main-text);
+  transform: rotate(10deg);
+}
+
+@media (min-width: 576px) {
+  .app-title span {
+    font-size: 80px;
+    line-height: 80px;
+    margin-left: var(--spacing5);
+  }
+
+  .app-title .ef-logo {
+    height: 80px;
+  }
+}
+
+/* Taken from https://www.shapedivider.app/ */
+.app-header-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.app-header-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+}
+
+.app-header-divider path {
+  fill: var(--color-header-bg);
+}

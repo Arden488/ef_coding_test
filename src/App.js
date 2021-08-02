@@ -1,13 +1,17 @@
+import Header from "./components/Header/Header";
+import Quiz from "./components/Quiz/Quiz";
+import Footer from "./components/Footer/Footer";
+
 import "./App.css";
-import Quiz from "./components/Quiz";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>EF - Quiz</h1>
-      </header>
-      <Quiz />
+    <div className="app">
+      <Header />
+      <div className="app-main">
+        <Quiz />
+      </div>
+      <Footer />
     </div>
   );
 }
