@@ -1,0 +1,15 @@
+.home-screen {
+  text-align: center;
+}
+
+.home-screen-intro {
+  font-size: 18px;
+}
+
+.home-screen-controls {
+  margin-bottom: 40px;
+}
+
+.home-screen-controls .form-control {
+  margin-bottom: 20px;
+}
