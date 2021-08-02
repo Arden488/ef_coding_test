@@ -10,6 +10,8 @@ I've created a simple quiz app, decently styled and fast. I installed a few "uti
 
 I spent about two hours to create styles, components and connect them together. Additional 30 minutes were spent to create tests. Another 30 minutes I used to write these notes and manually test the app.
 
+UPDATE: I added more functionality - quiz settings and quiz reset. It took about 20 mins
+
 ### Javascript/Typescript
 
 Although the role assumes Typescript knowledge I decided to stick with provided setup and use only js. To add TS support I would need to install additional packages, but README clearly states that "Changing how the application is bundled and run" is not expected.
