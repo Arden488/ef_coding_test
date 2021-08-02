@@ -35,7 +35,9 @@ State management is kept simple with handlers and props passed down (no unnecess
 
 ### Tests
 
-I've added multiple tests for components. Most of them are pretty straightforward, but the `Quiz` component required mocking fetch (for that purpose I used a `jest-fetch-mock` package)
+I've added multiple tests for components. Most of them are pretty straightforward, but the `Quiz` component required mocking fetch (for that purpose I used a `jest-fetch-mock` package).
+
+I had a small issue with running tests - an error "Cannot use import statement outside a module". I fixed it by adjusting test running script. (related github issue: https://github.com/facebook/create-react-app/issues/9938)
 
 ### Additional packages
 
