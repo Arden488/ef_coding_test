@@ -18,7 +18,7 @@
   margin: 0 auto;
   grid-area: main;
   width: 100%;
-  padding: 0 var(--spacing5);
+  padding: var(--spacing6) var(--spacing5);
   box-sizing: border-box;
 }
 

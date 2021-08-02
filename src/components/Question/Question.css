@@ -1,0 +1,9 @@
+.question-choices {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.question-choices button {
+  margin: var(--spacing1);
+}

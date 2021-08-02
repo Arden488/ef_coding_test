@@ -1,0 +1,11 @@
+.quiz-wrapper {
+  text-align: center;
+}
+
+.quiz-header {
+  margin-bottom: var(--spacing7);
+}
+
+.quiz-footer {
+  margin-top: var(--spacing7);
+}

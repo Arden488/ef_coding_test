@@ -1,0 +1,26 @@
+.answer-result {
+  margin-bottom: var(--spacing4);
+  background-color: var(--color-card-bg);
+  padding: var(--spacing3);
+  border-radius: var(--base-radius);
+  text-align: center;
+}
+
+.answer-result-question {
+  margin: 0 0 var(--spacing5);
+  font-weight: 500;
+  padding: 0;
+}
+
+.answer-result-explain {
+  margin: 0;
+  padding: 0;
+}
+
+.answer-result-yours {
+  color: var(--color-fail);
+}
+
+.answer-result.answer-result_correct .answer-result-yours {
+  color: var(--color-success);
+}

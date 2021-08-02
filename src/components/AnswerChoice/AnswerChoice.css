@@ -1,0 +1,21 @@
+.answer-choice {
+  border: 0;
+  background: var(--color-action-bg);
+  padding: var(--spacing2) var(--spacing5);
+  cursor: pointer;
+  border-radius: var(--button-radius);
+  transition: background 0.2s ease-in, color 0.2s ease-in;
+}
+
+.answer-choice:hover,
+.answer-choice:focus {
+  background: #dcdcdc;
+}
+
+.answer-choice_active,
+.answer-choice_active:hover,
+.answer-choice_active:focus {
+  cursor: default;
+  background: var(--color-secondary);
+  color: var(--color-secondary-text);
+}

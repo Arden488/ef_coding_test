@@ -4,21 +4,30 @@
   /* BRAND COLORS */
   --color-primary: #fc1784;
   --color-primary-hover: #d80076;
-  --color-primary-disabled: #bbb; /* TODO: update */
+  --color-primary-disabled: #b98ca5; /* TODO: update */
+  --color-primary-text: #fff;
   --color-secondary: #009fe2;
   --color-secondary-hover: #009fe2;
   --color-secondary-disabled: #ededed; /* TODO: update */
+  --color-secondary-text: #fff;
 
   /* APP COLORS */
   --color-main-text: #222;
   --color-main-bg: #fff;
   --color-header-bg: #fefbcf;
   --color-footer-bg: #e4eaee;
+  --color-card-bg: #f3f3f3;
+  --color-action-bg: #ededed;
+  --color-action-hover-bg: #009fe2;
+  --color-success: green;
+  --color-fail: red;
 
   /* TYPOGRAPHY */
   --text-size-global: 16px;
   --text-size-heading1: 60px;
   --text-size-heading2: 48px;
+  --text-size-heading3: 32px;
+  --text-size-heading4: 20px;
 
   /* SPACING */
   --spacing1: 4px;
@@ -27,7 +36,21 @@
   --spacing4: 16px;
   --spacing5: 24px;
   --spacing6: 32px;
-  --spacing7: 64px;
+  --spacing7: 47px;
+  --spacing8: 64px;
+
+  /* CONTROLS */
+  --text-size-button-normal: 18px;
+  --padding-button-normal: var(--spacing3) var(--spacing5);
+  --text-size-button-large: 18px;
+  --padding-button-large: var(--spacing4) var(--spacing6);
+  --button-radius: 4px;
+  --button-large-radius: 8px;
+
+  /* OTHER */
+  --base-radius: 8px;
+  --global-transition-speed: 0.2s;
+  --global-transition-easing: ease-in;
 }
 
 html,
@@ -83,7 +106,20 @@ h2 {
   font-size: var(--text-size-heading2);
 }
 
-h1,
-h2 {
+h3 {
+  font-size: var(--text-size-heading3);
+}
+
+h4 {
+  font-size: var(--text-size-heading4);
+  font-weight: 300;
+}
+
+h1 {
   font-weight: 700;
+}
+
+h2,
+h3 {
+  font-weight: 500;
 }

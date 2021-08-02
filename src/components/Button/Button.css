@@ -1,0 +1,22 @@
+.btn {
+  border: 0;
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--text-size-button);
+  padding: var(--padding-button-normal);
+  border-radius: var(--button-radius);
+  transition: background var(--global-transition-speed)
+    var(--global-transition-easing);
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--color-primary-hover);
+}
+
+.btn:disabled {
+  background: var(--color-primary-disabled);
+  cursor: default;
+}
