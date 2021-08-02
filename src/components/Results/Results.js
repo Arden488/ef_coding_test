@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { AppContext } from "../../context";
 
 import Button from "../Button/Button";
 import TotalScore from "../TotalScore/TotalScore";
@@ -6,10 +8,11 @@ import AnswerResultList from "../AnswerResultList/AnswerResultList";
 
 import "./Results.css";
 
-export default function Results({ results, handleReset }) {
+export default function Results() {
+  const { state, dispatch } = useContext(AppContext);
   const [correct, setCorrect] = useState(0);
+  const { results } = state;
 
-  // TODO: keep effect or calculate once?
   useEffect(() => {
     let correct = 0;
 
@@ -19,6 +22,10 @@ export default function Results({ results, handleReset }) {
 
     setCorrect(correct);
   }, [results]);
+
+  const handleReset = () => {
+    dispatch({ type: "RESET_QUIZ" });
+  };
 
   if (!results) return null;
 

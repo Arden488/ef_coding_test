@@ -14,11 +14,13 @@ export default function AnswerResult({ data }) {
   return (
     <div className={classnames}>
       <h4 className="answer-result__question">{parseEntities(question)}</h4>
-      <p className="answer-result__yours">Your answer: {answer}</p>
+      <p className="answer-result__yours">
+        Your answer: {parseEntities(answer)}
+      </p>
       {correct && <p className="answer-result__explain">Correct!</p>}
       {!correct && (
         <p className="answer-result__explain">
-          Sorry, the correct answer is: {correct_answer}
+          Sorry, the correct answer is: {parseEntities(correct_answer)}
         </p>
       )}
     </div>

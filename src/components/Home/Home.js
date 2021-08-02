@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { AppContext } from "../../context";
 import categories from "../../categories";
 
 import Button from "../Button/Button";
@@ -8,7 +10,9 @@ import FormControl from "../FormControl/FormControl";
 
 import "./Home.css";
 
-export default function Home({ handleStart }) {
+export default function Home() {
+  const { dispatch } = useContext(AppContext);
+
   const [numQuestions, setNumQuestions] = useState(10);
   const [category, setCategory] = useState(32);
   const [numberError, setNumberError] = useState(null);
@@ -29,9 +33,9 @@ export default function Home({ handleStart }) {
   };
 
   const onStart = () => {
-    handleStart({
-      num: numQuestions,
-      category,
+    dispatch({
+      type: "START_QUIZ",
+      payload: { settings: { num: numQuestions, category } },
     });
   };
 

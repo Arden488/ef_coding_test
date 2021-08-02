@@ -1,20 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import shuffle from "lodash/shuffle";
+
+import { AppContext } from "../../context";
 
 import Question from "../Question/Question";
 import Button from "../Button/Button";
-import Loader from "../Loader/Loader";
 
 import "./Quiz.css";
 
-export default function Quiz({
-  settings,
-  questionIndex,
-  handleFinished,
-  handleNext,
-}) {
-  const [data, setData] = useState(null);
-  const [totalQuestions, setTotalQuestions] = useState(0);
+export default function Quiz() {
+  const { state, dispatch } = useContext(AppContext);
+  const { settings, questions, questionIndex, totalQuestions } = state;
+
   const [chosenAnswer, setChosenAnswer] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
 
@@ -25,15 +22,36 @@ export default function Quiz({
     )
       .then((res) => res.json())
       .then((result) => {
-        setData(result.results);
-        setTotalQuestions(result.results.length);
+        if (result.results && result.results.length > 0) {
+          dispatch({
+            type: "LOAD_QUESTIONS",
+            payload: { questions: result.results },
+          });
+        } else {
+          dispatch({
+            type: "SET_ERROR",
+            payload: {
+              isLoading: false,
+              isError: true,
+            },
+          });
+        }
+      })
+      .catch(() => {
+        dispatch({
+          type: "SET_ERROR",
+          payload: {
+            isLoading: false,
+            isError: true,
+          },
+        });
       });
-  }, [settings]);
+  }, [settings, dispatch]);
 
   // Check if it is the last question. If it is - set finish state.
   // Else - prepare new question
   useEffect(() => {
-    if (!data) return;
+    if (!questions || questions.length <= 0) return;
 
     // Utility function to shuffle answers to avoid
     // predictable position of the corrent answer
@@ -43,28 +61,35 @@ export default function Quiz({
       return { question, choices, correct_answer };
     };
 
-    if (questionIndex === data.length) {
-      handleFinished();
+    if (questionIndex === questions.length) {
+      dispatch({
+        type: "FINISH_QUIZ",
+      });
     } else {
-      const newQuestion = getCurrentQuestionData(data[questionIndex]);
+      const newQuestion = getCurrentQuestionData(questions[questionIndex]);
       setCurrentQuestion(newQuestion);
     }
-  }, [data, questionIndex, handleFinished]);
+  }, [questions, questionIndex, dispatch]);
 
   const handleAnswerChoice = (choice) => {
     setChosenAnswer(choice);
   };
 
   const handleNextQuestion = () => {
-    handleNext({
-      ...currentQuestion,
-      answer: chosenAnswer,
-      correct: chosenAnswer === currentQuestion.correct_answer,
+    dispatch({
+      type: "CONFIRM_ANSWER",
+      payload: {
+        question: {
+          ...currentQuestion,
+          answer: chosenAnswer,
+          correct: chosenAnswer === currentQuestion.correct_answer,
+        },
+      },
     });
     setChosenAnswer(null);
   };
 
-  if (!data || !currentQuestion) return <Loader />;
+  if (!currentQuestion) return null;
 
   const { question, choices } = currentQuestion;
 
