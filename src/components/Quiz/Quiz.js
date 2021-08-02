@@ -18,6 +18,7 @@ export default function Quiz({
   const [chosenAnswer, setChosenAnswer] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
 
+  // Fetch data
   useEffect(() => {
     fetch(
       `https://opentdb.com/api.php?amount=${settings.num}&category=${settings.category}`
@@ -29,9 +30,13 @@ export default function Quiz({
       });
   }, [settings]);
 
+  // Check if it is the last question. If it is - set finish state.
+  // Else - prepare new question
   useEffect(() => {
     if (!data) return;
 
+    // Utility function to shuffle answers to avoid
+    // predictable position of the corrent answer
     const getCurrentQuestionData = (originalData) => {
       const { correct_answer, incorrect_answers, question } = originalData;
       const choices = shuffle([correct_answer, ...incorrect_answers]);

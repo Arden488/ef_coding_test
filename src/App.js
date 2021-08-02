@@ -31,6 +31,12 @@ function App() {
     setQuizStatus("FINISHED");
   };
 
+  const handleQuizReset = () => {
+    setQuizStatus("NOT_STARTED");
+    setResults([]);
+    setQuestionIndex(0);
+  };
+
   return (
     <div className="app">
       <Header />
@@ -44,7 +50,9 @@ function App() {
             handleNext={handleResults}
           />
         )}
-        {quizStatus === "FINISHED" && <Results results={results} />}
+        {quizStatus === "FINISHED" && (
+          <Results handleReset={handleQuizReset} results={results} />
+        )}
       </div>
       <Footer />
     </div>
