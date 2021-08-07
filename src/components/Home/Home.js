@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AppContext } from "../../context";
+import { AppContext } from "../../AppContext";
 import categories from "../../categories";
 
 import Button from "../Button/Button";

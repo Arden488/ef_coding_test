@@ -1,14 +1,10 @@
 import { createContext, useReducer } from "react";
-import reducer from "./reducer";
+import reducer from "./AppReducer";
 
 const AppContext = createContext();
 
 const initialState = {
   quizStatus: "NOT_STARTED",
-  questions: [],
-  results: [],
-  totalQuestions: 0,
-  questionIndex: 0,
   isLoading: false,
   isError: false,
   settings: { num: 10, category: 32 },

@@ -1,18 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useCallback, useEffect, useState } from "react";
 import shuffle from "lodash/shuffle";
 
-import { AppContext } from "../../context";
+import { AppContext } from "../../AppContext";
+import { DataContext } from "../../DataContext";
 
 import Question from "../Question/Question";
-import Button from "../Button/Button";
 
 import "./Quiz.css";
 
 export default function Quiz() {
-  const { state, dispatch } = useContext(AppContext);
-  const { settings, questions, questionIndex, totalQuestions } = state;
+  const { state: DataState, dispatch: DataDispatch } = useContext(DataContext);
+  const { state: AppState, dispatch: AppDispatch } = useContext(AppContext);
+  const { questions, questionIndex, totalQuestions } = DataState;
+  const { settings } = AppState;
 
-  const [chosenAnswer, setChosenAnswer] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(null);
 
   // Fetch data
@@ -23,12 +24,16 @@ export default function Quiz() {
       .then((res) => res.json())
       .then((result) => {
         if (result.results && result.results.length > 0) {
-          dispatch({
+          DataDispatch({
             type: "LOAD_QUESTIONS",
             payload: { questions: result.results },
           });
+          AppDispatch({
+            type: "SET_LOADING",
+            payload: { isLoading: false },
+          });
         } else {
-          dispatch({
+          AppDispatch({
             type: "SET_ERROR",
             payload: {
               isLoading: false,
@@ -38,7 +43,7 @@ export default function Quiz() {
         }
       })
       .catch(() => {
-        dispatch({
+        AppDispatch({
           type: "SET_ERROR",
           payload: {
             isLoading: false,
@@ -46,7 +51,7 @@ export default function Quiz() {
           },
         });
       });
-  }, [settings, dispatch]);
+  }, [settings, DataDispatch, AppDispatch]);
 
   // Check if it is the last question. If it is - set finish state.
   // Else - prepare new question
@@ -62,32 +67,14 @@ export default function Quiz() {
     };
 
     if (questionIndex === questions.length) {
-      dispatch({
+      AppDispatch({
         type: "FINISH_QUIZ",
       });
     } else {
       const newQuestion = getCurrentQuestionData(questions[questionIndex]);
       setCurrentQuestion(newQuestion);
     }
-  }, [questions, questionIndex, dispatch]);
-
-  const handleAnswerChoice = (choice) => {
-    setChosenAnswer(choice);
-  };
-
-  const handleNextQuestion = () => {
-    dispatch({
-      type: "CONFIRM_ANSWER",
-      payload: {
-        question: {
-          ...currentQuestion,
-          answer: chosenAnswer,
-          correct: chosenAnswer === currentQuestion.correct_answer,
-        },
-      },
-    });
-    setChosenAnswer(null);
-  };
+  }, [questions, questionIndex, AppDispatch]);
 
   if (!currentQuestion) return null;
 
@@ -98,17 +85,7 @@ export default function Quiz() {
       <div className="quiz-header">
         Question #{questionIndex + 1} out of {totalQuestions}
       </div>
-      <Question
-        question={question}
-        choices={choices}
-        chosen={chosenAnswer}
-        handleChoice={handleAnswerChoice}
-      />
-      <div className="quiz-footer">
-        <Button disabled={!chosenAnswer} onClick={handleNextQuestion}>
-          Next
-        </Button>
-      </div>
+      <Question question={currentQuestion} choices={choices} />
     </div>
   );
 }
