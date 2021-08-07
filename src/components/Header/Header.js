@@ -2,8 +2,9 @@ import { ReactComponent as Logo } from "./ef-logo.svg";
 import { ReactComponent as Divider } from "./divider.svg";
 
 import "./Header.css";
+import { memo } from "react";
 
-export default function Header() {
+function Header() {
   return (
     <header className="app-header">
       <h1 className="app-title">
@@ -16,3 +17,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default memo(Header);

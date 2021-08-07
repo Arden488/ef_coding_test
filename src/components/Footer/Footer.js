@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { ReactComponent as Divider } from "./divider.svg";
 
 import "./Footer.css";
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="app-footer">
       <div className="app-footer__divider">
@@ -14,3 +15,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default memo(Footer);

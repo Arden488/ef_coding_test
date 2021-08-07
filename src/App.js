@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 
-import { AppContext } from "./context";
+import { AppContext } from "./AppContext";
+import { DataProvider } from "./DataContext";
 
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import Header from "./components/Header/Header";
@@ -28,8 +29,10 @@ function App() {
           {!isError && (
             <Fragment>
               {quizStatus === "NOT_STARTED" && <Home />}
-              {quizStatus === "STARTED" && <Quiz />}
-              {quizStatus === "FINISHED" && <Results />}
+              <DataProvider>
+                {quizStatus === "STARTED" && <Quiz />}
+                {quizStatus === "FINISHED" && <Results />}
+              </DataProvider>
             </Fragment>
           )}
         </ErrorBoundary>

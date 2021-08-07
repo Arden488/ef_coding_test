@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
-import { AppContext } from "../../context";
+import { AppContext } from "../../AppContext";
+import { DataContext } from "../../DataContext";
 
 import Button from "../Button/Button";
 import TotalScore from "../TotalScore/TotalScore";
@@ -9,9 +10,11 @@ import AnswerResultList from "../AnswerResultList/AnswerResultList";
 import "./Results.css";
 
 export default function Results() {
-  const { state, dispatch } = useContext(AppContext);
+  const { state: DataState, dispatch: DataDispatch } = useContext(DataContext);
+  const { dispatch: AppDispatch } = useContext(AppContext);
+
   const [correct, setCorrect] = useState(0);
-  const { results } = state;
+  const { results } = DataState;
 
   useEffect(() => {
     let correct = 0;
@@ -24,7 +27,8 @@ export default function Results() {
   }, [results]);
 
   const handleReset = () => {
-    dispatch({ type: "RESET_QUIZ" });
+    AppDispatch({ type: "RESET_QUIZ" });
+    DataDispatch({ type: "RESET_QUIZ" });
   };
 
   if (!results) return null;
