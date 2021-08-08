@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useReducer } from "react";
-import { AppContext, initialState } from "../../context";
+import { AppContext, initialState } from "../../AppContext";
 import reducer from "../../reducer";
 import Home from "./Home";
 
