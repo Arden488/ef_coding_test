@@ -1,4 +1,7 @@
+import { InputHTMLAttributes } from "react";
 import "./TextInput.css";
+
+interface Props extends InputHTMLAttributes<HTMLInputElement> {}
 
 export default function TextInput({
   name,
@@ -6,7 +9,7 @@ export default function TextInput({
   value,
   onChange,
   ...props
-}) {
+}: Props) {
   return (
     <input
       type={type}

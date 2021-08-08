@@ -1,9 +1,14 @@
 import classNames from "classnames";
 import { parseEntities } from "parse-entities";
+import { Result } from "../../state";
 
 import "./AnswerResult.css";
 
-export default function AnswerResult({ data }) {
+type Props = {
+  data: Result;
+};
+
+export default function AnswerResult({ data }: Props) {
   const { correct, answer, question, correct_answer } = data;
 
   let classnames = classNames({

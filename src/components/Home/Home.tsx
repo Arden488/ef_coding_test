@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 
 import { AppContext } from "../../context";
 import categories from "../../categories";
@@ -15,12 +15,12 @@ export default function Home() {
 
   const [numQuestions, setNumQuestions] = useState(10);
   const [category, setCategory] = useState(32);
-  const [numberError, setNumberError] = useState(null);
+  const [numberError, setNumberError] = useState<string | null>(null);
 
-  const handleNumberChange = (e) => {
+  const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNumberError(null);
 
-    let value = e.target.value;
+    let value = +e.target.value;
     if (isNaN(value) || !value || value < 1 || value > 99) {
       setNumberError("Number of questions must be between 1 and 99");
     }
@@ -28,8 +28,8 @@ export default function Home() {
     setNumQuestions(value);
   };
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
+  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setCategory(+e.target.value);
   };
 
   const onStart = () => {
@@ -42,11 +42,11 @@ export default function Home() {
   return (
     <div className="home-screen">
       <div className="home-screen-controls">
-        <FormControl label="Number of questions" error={numberError}>
+        <FormControl label="Number of questions" error={numberError || ""}>
           <TextInput
             name="num"
             type="number"
-            size="3"
+            size={3}
             value={numQuestions}
             onChange={handleNumberChange}
           />
@@ -63,7 +63,7 @@ export default function Home() {
       <p className="home-screen-intro">
         Click "Start" button to begin a new quiz
       </p>
-      <Button variant="large" disabled={numberError} onClick={onStart}>
+      <Button variant="large" disabled={!!numberError} onClick={onStart}>
         Start
       </Button>
     </div>

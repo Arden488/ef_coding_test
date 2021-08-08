@@ -1,9 +1,8 @@
 import { createContext, useReducer } from "react";
+import { AppAction, AppState } from "./state";
 import reducer from "./reducer";
 
-const AppContext = createContext();
-
-const initialState = {
+const initialState: AppState = {
   quizStatus: "NOT_STARTED",
   questions: [],
   results: [],
@@ -14,7 +13,15 @@ const initialState = {
   settings: { num: 10, category: 32 },
 };
 
-function AppProvider({ children }) {
+const AppContext = createContext<{
+  state: AppState;
+  dispatch: React.Dispatch<AppAction>;
+}>({
+  state: initialState,
+  dispatch: () => undefined,
+});
+
+function AppProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

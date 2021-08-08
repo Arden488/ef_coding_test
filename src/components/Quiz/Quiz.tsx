@@ -7,13 +7,16 @@ import Question from "../Question/Question";
 import Button from "../Button/Button";
 
 import "./Quiz.css";
+import { OriginalDataType, QuestionType } from "../../state";
 
 export default function Quiz() {
   const { state, dispatch } = useContext(AppContext);
   const { settings, questions, questionIndex, totalQuestions } = state;
 
-  const [chosenAnswer, setChosenAnswer] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<QuestionType | null>(
+    null
+  );
 
   // Fetch data
   useEffect(() => {
@@ -55,7 +58,9 @@ export default function Quiz() {
 
     // Utility function to shuffle answers to avoid
     // predictable position of the corrent answer
-    const getCurrentQuestionData = (originalData) => {
+    const getCurrentQuestionData = (
+      originalData: OriginalDataType
+    ): QuestionType => {
       const { correct_answer, incorrect_answers, question } = originalData;
       const choices = shuffle([correct_answer, ...incorrect_answers]);
       return { question, choices, correct_answer };
@@ -71,11 +76,13 @@ export default function Quiz() {
     }
   }, [questions, questionIndex, dispatch]);
 
-  const handleAnswerChoice = (choice) => {
+  const handleAnswerChoice = (choice: string) => {
     setChosenAnswer(choice);
   };
 
   const handleNextQuestion = () => {
+    if (!chosenAnswer || !currentQuestion) return;
+
     dispatch({
       type: "CONFIRM_ANSWER",
       payload: {

@@ -3,7 +3,19 @@ import AnswerChoice from "../AnswerChoice/AnswerChoice";
 
 import "./Question.css";
 
-export default function Question({ question, choices, chosen, handleChoice }) {
+interface Props {
+  question: string;
+  choices: string[];
+  chosen: string | null;
+  handleChoice: (choice: string) => void;
+}
+
+export default function Question({
+  question,
+  choices,
+  chosen,
+  handleChoice,
+}: Props) {
   if (!question || !choices) return null;
 
   return (
