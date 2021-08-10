@@ -1,6 +1,11 @@
+import { Result } from "../../types";
 import AnswerResult from "../AnswerResult/AnswerResult";
 
-export default function AnswerResultList({ questions }) {
+interface Props {
+  questions: Result[];
+}
+
+export default function AnswerResultList({ questions }: Props) {
   if (!questions) return <p>Sorry, no results are recorded...</p>;
 
   return (

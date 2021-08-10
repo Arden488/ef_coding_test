@@ -1,6 +1,11 @@
 import "./TotalScore.css";
 
-export default function TotalScore({ correct, total }) {
+interface Props {
+  correct: number;
+  total: number;
+}
+
+export default function TotalScore({ correct, total }: Props) {
   return (
     <h3 className="total-score">
       Thank you for taking our quiz!

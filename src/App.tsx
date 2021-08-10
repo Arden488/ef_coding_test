@@ -10,7 +10,7 @@ import Results from "./components/Results/Results";
 import Quiz from "./components/Quiz/Quiz";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
-import Error from "./components/Error/Error";
+import CustomError from "./components/CustomError/CustomError";
 
 import "./App.css";
 
@@ -23,7 +23,7 @@ function App() {
       <Header />
       <div className="app-main">
         <ErrorBoundary>
-          {isError && <Error />}
+          {isError && <CustomError />}
           {isLoading && <Loader />}
 
           {!isError && (

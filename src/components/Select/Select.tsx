@@ -1,6 +1,17 @@
+import { SelectHTMLAttributes } from "react";
 import "./Select.css";
 
-export default function Select({ name, value, options, onChange, ...props }) {
+interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+  options: string[][];
+}
+
+export default function Select({
+  name,
+  value,
+  options,
+  onChange,
+  ...props
+}: Props) {
   return (
     <select
       name={name}

@@ -1,6 +1,12 @@
 import "./FormControl.css";
 
-export default function FormControl({ label, error, children }) {
+interface Props {
+  label: string;
+  error?: string;
+  children?: React.ReactNode;
+}
+
+export default function FormControl({ label, error, children }: Props) {
   return (
     <label className="form-control">
       {label && <span className="form-control-label">{label}</span>}

@@ -1,8 +1,18 @@
 import classNames from "classnames";
+import { ButtonHTMLAttributes } from "react";
 
 import "./Button.css";
 
-export default function Button({ children, variant = "normal", ...props }) {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
+  variant?: string;
+}
+
+export default function Button({
+  children,
+  variant = "normal",
+  ...props
+}: Props) {
   let classnames = classNames({
     btn: true,
     "btn--large": variant === "large",

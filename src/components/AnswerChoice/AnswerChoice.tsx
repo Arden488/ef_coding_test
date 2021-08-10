@@ -1,16 +1,24 @@
-import { memo } from "react";
+import { ChangeEvent, memo, SyntheticEvent } from "react";
 import classNames from "classnames";
 
 import "./AnswerChoice.css";
 
-function AnswerChoice({ children, handleChoice, isActive }) {
+interface Props {
+  children?: React.ReactNode;
+  handleChoice: () => void;
+  isActive: boolean;
+}
+
+function AnswerChoice({ children, handleChoice, isActive }: Props) {
   let classnames = classNames({
     "answer-choice": true,
     "answer-choice--active": isActive,
   });
 
-  const onClick = (e) => {
-    handleChoice(e.target.textContent);
+  const onClick = (e: SyntheticEvent) => {
+    if (e.currentTarget) {
+      handleChoice(e.currentTarget.textContent);
+    }
   };
 
   return (

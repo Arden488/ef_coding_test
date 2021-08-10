@@ -9,12 +9,19 @@ import Button from "../Button/Button";
 
 import "./Question.css";
 
-export default function Question({ question, choices }) {
+interface Props {
+  question: string;
+  choices: string[];
+  chosen: string | null;
+  handleChoice: (choice: string) => void;
+}
+
+export default function Question({ question, choices }: Props) {
   const { state: DataState, dispatch: DataDispatch } = useContext(DataContext);
   const { state: AppState, dispatch: AppDispatch } = useContext(AppContext);
   const [chosenAnswer, setChosenAnswer] = useState(null);
 
-  const handleAnswerChoice = useCallback((choice) => {
+  const handleAnswerChoice = useCallback((choice: string) => {
     setChosenAnswer(choice);
   }, []);
 

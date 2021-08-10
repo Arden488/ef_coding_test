@@ -37,7 +37,12 @@ export enum ActionType {
   ResetQuiz,
 }
 
-export type AppAction = SetLoading | SetError | StartQuiz | FinishQuiz;
+export type AppAction =
+  | SetLoading
+  | SetError
+  | StartQuiz
+  | FinishQuiz
+  | ResetQuiz;
 
 export type DataAction = LoadQuestions | ConfirmAnswer | ResetQuiz;
 

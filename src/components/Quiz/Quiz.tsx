@@ -7,6 +7,7 @@ import { DataContext } from "../../DataContext";
 import Question from "../Question/Question";
 
 import "./Quiz.css";
+import { OriginalDataType, QuestionType } from "../../types";
 
 export default function Quiz() {
   const { state: DataState, dispatch: DataDispatch } = useContext(DataContext);
@@ -14,7 +15,9 @@ export default function Quiz() {
   const { questions, questionIndex, totalQuestions } = DataState;
   const { settings } = AppState;
 
-  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState<QuestionType | null>(
+    null
+  );
 
   // Fetch data
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function Quiz() {
 
     // Utility function to shuffle answers to avoid
     // predictable position of the corrent answer
-    const getCurrentQuestionData = (originalData) => {
+    const getCurrentQuestionData = (originalData: OriginalDataType) => {
       const { correct_answer, incorrect_answers, question } = originalData;
       const choices = shuffle([correct_answer, ...incorrect_answers]);
       return { question, choices, correct_answer };
@@ -85,7 +88,7 @@ export default function Quiz() {
       <div className="quiz-header">
         Question #{questionIndex + 1} out of {totalQuestions}
       </div>
-      <Question question={currentQuestion} choices={choices} />
+      <Question question={question} choices={choices} />
     </div>
   );
 }
