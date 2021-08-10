@@ -1,4 +1,6 @@
-const reducer = (state, action) => {
+import { DataAction, DataState } from "./types";
+
+const reducer = (state: DataState, action: DataAction) => {
   switch (action.type) {
     case "LOAD_QUESTIONS":
       return {

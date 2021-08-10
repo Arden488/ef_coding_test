@@ -1,4 +1,6 @@
-const reducer = (state, action) => {
+import { AppAction, AppState } from "./types";
+
+const reducer = (state: AppState, action: AppAction) => {
   switch (action.type) {
     case "SET_LOADING":
       return {
